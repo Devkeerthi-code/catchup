@@ -1,0 +1,29 @@
+# dependencies
+/node_modules
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+/build
+next-env.d.ts
+*.tsbuildinfo
+
+# prisma generated client
+/src/generated/
+
+# env files (.env.example is committed on purpose)
+.env
+.env*.local
+
+# local tooling
+.vercel
+.DS_Store
+*.pem
+npm-debug.log*
+AGENTS.md
+
+# benchmark fixtures are generated, not committed
+/scripts/out/
