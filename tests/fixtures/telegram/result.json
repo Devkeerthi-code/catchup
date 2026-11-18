@@ -1,0 +1,130 @@
+{
+ "name": "Robotics Club 2024",
+ "type": "private_supergroup",
+ "id": 1700000001,
+ "messages": [
+  {
+   "id": 1,
+   "type": "service",
+   "date": "2024-03-12T10:00:00",
+   "date_unixtime": "1710217800",
+   "text": "",
+   "text_entities": [],
+   "actor": "Neha Joshi",
+   "actor_id": "user111",
+   "action": "create_group",
+   "title": "Robotics Club 2024"
+  },
+  {
+   "id": 2,
+   "type": "message",
+   "date": "2024-03-12T10:05:00",
+   "date_unixtime": "1710218100",
+   "text": "Workshop on Saturday at 2 PM in the Innovation Lab",
+   "text_entities": [],
+   "from": "Neha Joshi",
+   "from_id": "user111"
+  },
+  {
+   "id": 3,
+   "type": "message",
+   "date": "2024-03-12T10:06:00",
+   "date_unixtime": "1710218160",
+   "text": "Do we need to bring our own Arduino?",
+   "text_entities": [],
+   "from": "Varun S",
+   "from_id": "user222",
+   "reply_to_message_id": 2
+  },
+  {
+   "id": 4,
+   "type": "message",
+   "date": "2024-03-12T10:07:30",
+   "date_unixtime": "1710218250",
+   "text": [
+    "Kits are provided. Register here: ",
+    {
+     "type": "text_link",
+     "text": "form",
+     "href": "https://forms.gle/AbCdEf123"
+    },
+    " before Friday"
+   ],
+   "text_entities": [],
+   "from": "Neha Joshi",
+   "from_id": "user111",
+   "reply_to_message_id": 3
+  },
+  {
+   "id": 5,
+   "type": "message",
+   "date": "2024-03-12T11:00:00",
+   "date_unixtime": "1710221400",
+   "text": "IEEE hackathon registrations close on 20 March",
+   "text_entities": [],
+   "from": "Pranav",
+   "from_id": "user333",
+   "forwarded_from": "IEEE Student Branch"
+  },
+  {
+   "id": 6,
+   "type": "message",
+   "date": "2024-03-12T11:30:00",
+   "date_unixtime": "1710223200",
+   "text": "",
+   "text_entities": [],
+   "from": "Varun S",
+   "from_id": "user222",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "media_type": "sticker",
+   "sticker_emoji": "👍",
+   "reactions": [
+    {
+     "type": "emoji",
+     "count": 3,
+     "emoji": "😂"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "type": "message",
+   "date": "2024-03-12T12:00:00",
+   "date_unixtime": "1710225000",
+   "text": "",
+   "text_entities": [],
+   "from": "Neha Joshi",
+   "from_id": "user111",
+   "poll": {
+    "question": "Which day for the next meetup?",
+    "closed": true,
+    "total_voters": 9,
+    "answers": [
+     {
+      "text": "Monday",
+      "voters": 2,
+      "chosen": false
+     },
+     {
+      "text": "Wednesday",
+      "voters": 7,
+      "chosen": true
+     }
+    ]
+   }
+  },
+  {
+   "id": 8,
+   "type": "message",
+   "date": "2024-03-12T12:30:00",
+   "date_unixtime": "1710226800",
+   "text": "Final design doc",
+   "text_entities": [],
+   "from": "Pranav",
+   "from_id": "user333",
+   "file": "files/Bot_Design_v2.pdf",
+   "file_name": "Bot_Design_v2.pdf",
+   "mime_type": "application/pdf"
+  }
+ ]
+}
