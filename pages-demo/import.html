@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Import a chat · CatchUp</title>
+  <meta name="description" content="Drop a chat export, paste text or add screenshots. Names and numbers are masked on your device before anything is sent.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width='22' height='22' rx='5' fill='%230e1a24'/%3E%3Crect x='4' y='5' width='9' height='2.5' rx='1.25' fill='%2357636e'/%3E%3Crect x='4' y='9.75' width='14' height='3' rx='1.5' fill='%23d7f25c'/%3E%3Crect x='4' y='15' width='6' height='2.5' rx='1.25' fill='%2357636e'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#ffffff">
+  <script>try{var t=localStorage.getItem("catchup-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <p class="static-note">Static preview with fictional data. The working app (import, AI summary, accounts) runs on Vercel; the link is in the project README.</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="CatchUp home">
+        <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true"><rect class="n" x="1" y="2" width="13" height="3" rx="1.5"/><rect class="n" x="1" y="7" width="19" height="3" rx="1.5"/><rect class="s" x="1" y="12" width="20" height="4" rx="2"/><rect class="n" x="1" y="18" width="9" height="3" rx="1.5"/></svg>
+        CatchUp
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html" class="hide-sm">How it works</a>
+        <a href="catchup.html" class="hide-sm">Demo catch-up</a>
+        <a href="import.html" aria-current="page">Import</a>
+      </nav>
+      <button class="icon-btn" type="button" data-theme-toggle data-press aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-moon"></use></svg></button>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <div class="page-head">
+      <span class="eyebrow">Step 2 of 4</span>
+      <h1>Bring in the chat you missed</h1>
+      <p>Drop the export file, paste the messages, or add screenshots. Everything below is read in this browser tab first.</p>
+    </div>
+
+    <div class="import-grid" id="import" data-state="empty">
+      <div>
+        <div class="tabs" role="tablist" aria-label="How to add your chat">
+          <button class="tab" role="tab" id="tab-file" aria-controls="panel-file" aria-selected="true" tabindex="0"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-upload"></use></svg>Export file</button>
+          <button class="tab" role="tab" id="tab-paste" aria-controls="panel-paste" aria-selected="false" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-clipboard"></use></svg>Paste text</button>
+          <button class="tab" role="tab" id="tab-shot" aria-controls="panel-shot" aria-selected="false" tabindex="-1"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-screenshot"></use></svg>Screenshots</button>
+        </div>
+
+        <!-- FILE -->
+        <section class="tabpanel" role="tabpanel" id="panel-file" aria-labelledby="tab-file" tabindex="0">
+          <div class="state state--empty">
+            <div class="dropzone" id="dropzone">
+              <div class="dropzone__icon" aria-hidden="true"><svg class="icon"><use href="icons.svg#u-upload"></use></svg></div>
+              <h2>Drop your chat export here</h2>
+              <p>On WhatsApp: open the group, tap More, then Export chat, Without media. Share the file to this page or save it and choose it below.</p>
+              <div class="dropzone__types" aria-label="Accepted file types"><span>.txt</span><span>.zip</span><span>.json</span><span>up to 20 MB</span></div>
+              <input class="dropzone__input" type="file" id="file-input" accept=".txt,.zip,.json,text/plain,application/zip,application/json">
+              <label class="btn btn--primary" for="file-input" data-press><span class="btn__dot" aria-hidden="true"></span>Choose a file</label>
+            </div>
+          </div>
+
+          <div class="state state--loading" aria-busy="true">
+            <div class="skeleton" aria-label="Reading your file">
+              <div style="display:flex;gap:12px;align-items:center"><span class="sk" style="width:44px;height:44px;border-radius:8px"></span><div style="flex:1;display:grid;gap:8px"><span class="sk" style="height:14px;width:60%"></span><span class="sk" style="height:10px;width:30%"></span></div></div>
+              <span class="sk" style="height:44px;border-radius:12px"></span>
+              <div class="kv"><span class="sk" style="height:64px"></span><span class="sk" style="height:64px"></span><span class="sk" style="height:64px"></span><span class="sk" style="height:64px"></span></div>
+            </div>
+          </div>
+
+          <div class="state state--detected state--parsing state--done" id="filecard-wrap">
+            <div class="filecard">
+              <div class="filecard__top">
+                <span class="filecard__icon" aria-hidden="true"><svg class="icon"><use href="icons.svg#i-file"></use></svg></span>
+                <div><div class="filecard__name" id="file-name">WhatsApp Chat with CSE-B 2nd Year.zip</div><div class="filecard__size" id="file-size">412 KB · demo file</div></div>
+                <button class="btn btn--ghost btn--sm hide-when-busy" type="button" id="remove-file" data-press><svg class="icon" aria-hidden="true"><use href="icons.svg#u-close"></use></svg>Remove</button>
+              </div>
+              <div class="detected">
+                <svg class="icon" aria-hidden="true"><use href="icons.svg#u-check"></use></svg>
+                <span>Detected: <b id="detected-label">WhatsApp (Android, 24h, DD/MM)</b></span>
+                <label class="detected__fix hide-when-busy"><span class="visually-hidden">Change detected format</span>
+                  <select class="select" style="min-height:32px;padding:2px 8px;font-size:12px" id="format-fix">
+                    <option>Looks right</option><option>WhatsApp (iPhone)</option><option>WhatsApp (Android, 12h)</option><option>Date is MM/DD</option><option>Telegram JSON</option>
+                  </select>
+                </label>
+              </div>
+              <dl class="kv">
+                <div><dt>Messages</dt><dd id="kv-msgs">1,284</dd></div>
+                <div><dt>Members</dt><dd>38</dd></div>
+                <div><dt>First</dt><dd>19 Nov</dd></div>
+                <div><dt>Last</dt><dd>20 Nov</dd></div>
+              </dl>
+            </div>
+          </div>
+
+          <div class="state state--error" role="alert">
+            <div class="errorbox">
+              <h2><svg class="icon" aria-hidden="true"><use href="icons.svg#u-alert"></use></svg>That file doesn't look like a chat export</h2>
+              <p style="font-size:var(--text-sm);color:var(--color-ink-2)">We opened <b id="err-name">IMG-20261120-WA0041.jpg</b> and found no messages in it. If it is a screenshot, use the Screenshots tab. For a full export:</p>
+              <ol><li>Open the group in WhatsApp</li><li>Tap the group name, then Export chat</li><li>Pick Without media and share the .txt or .zip here</li></ol>
+              <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn btn--primary" type="button" id="retry" data-press>Try another file</button><button class="btn btn--secondary" type="button" data-goto-tab="tab-shot" data-press>Use screenshots instead</button></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- PASTE -->
+        <section class="tabpanel" role="tabpanel" id="panel-paste" aria-labelledby="tab-paste" tabindex="0" hidden>
+          <div class="field">
+            <label for="paste">Paste messages</label>
+            <textarea class="textarea" id="paste" spellcheck="false" placeholder="20/11/26, 8:12 am - Name: message&#10;20/11/26, 8:13 am - Name: message"></textarea>
+            <p class="hint" id="paste-hint">The privacy preview on the right updates as you type. Nothing is sent until you press Make my catch-up.</p>
+          </div>
+        </section>
+
+        <!-- SCREENSHOTS -->
+        <section class="tabpanel" role="tabpanel" id="panel-shot" aria-labelledby="tab-shot" tabindex="0" hidden>
+          <div class="dropzone" id="shotzone" style="min-height:240px">
+            <div class="dropzone__icon" aria-hidden="true"><svg class="icon"><use href="icons.svg#g-screenshot"></use></svg></div>
+            <h2>Add up to 10 screenshots</h2>
+            <p>Text is read from the images on this device. Crop out notification bars if you can; we'll skip anything that isn't a message.</p>
+            <input class="dropzone__input" type="file" id="shot-input" accept="image/png,image/jpeg,image/webp" multiple>
+            <label class="btn btn--secondary" for="shot-input" data-press>Choose screenshots</label>
+          </div>
+        </section>
+
+        <div class="state state--parsing" style="margin-top:var(--space-4)">
+          <div class="progress" aria-live="polite">
+            <div class="progress__head"><h2>Reading on your device</h2><span class="progress__pct" id="pct">0%</span></div>
+            <div class="progress__track" role="progressbar" aria-label="Catch-up progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="bar"><div class="progress__fill" id="bar-fill"></div></div>
+            <ol class="stages" id="stages">
+              <li>Unzipping the export</li>
+              <li>Reading messages <span class="num" id="stage-count"></span></li>
+              <li>Masking names, phones, emails and UPI IDs</li>
+              <li>Finding deadlines, decisions and questions</li>
+            </ol>
+            <p class="hint">Runs in a background worker, so this tab stays responsive. You can keep scrolling.</p>
+          </div>
+        </div>
+
+        <div class="state state--done" style="margin-top:var(--space-4)">
+          <div class="donebox">
+            <h2>Your catch-up is ready: 9 things from 1,284 messages</h2>
+            <p>2 deadlines, 2 decisions, 2 links, 1 file, 1 open question and 1 poll. The raw chat has already been cleared from memory.</p>
+            <div><a class="btn btn--primary" href="catchup.html" data-press>Open my catch-up<svg class="icon" aria-hidden="true"><use href="icons.svg#u-arrow"></use></svg></a></div>
+          </div>
+        </div>
+
+        <fieldset class="range hide-when-busy">
+          <legend class="legend">Catch me up from</legend>
+          <div class="range__opts">
+            <div class="opt">
+              <label class="opt__main">
+                <input type="radio" name="range" value="last" checked>
+                <span class="opt__title">My last message</span>
+                <span class="opt__desc">Starts right after the last thing you sent.</span>
+              </label>
+              <div class="opt__extra">
+                <select class="select" aria-label="Which member are you?" aria-describedby="me-hint" style="font-size:var(--text-sm)"><option>I'm Member 14</option><option>I'm Member 3</option><option>I'm Member 22</option></select>
+                <span class="hint" id="me-hint" style="display:block;margin-top:4px">Last sent Thu 19 Nov, 11:40 PM</span>
+              </div>
+            </div>
+            <div class="opt">
+              <label class="opt__main">
+                <input type="radio" name="range" value="days">
+                <span class="opt__title">The last few days</span>
+                <span class="opt__desc">Good after a trip or exams.</span>
+              </label>
+              <div class="opt__extra">
+                <span class="stepper"><button type="button" id="days-minus" aria-label="One day fewer">−</button><output id="days-out" aria-live="polite">3 days</output><button type="button" id="days-plus" aria-label="One day more">+</button></span>
+              </div>
+            </div>
+            <div class="opt">
+              <label class="opt__main">
+                <input type="radio" name="range" value="date">
+                <span class="opt__title">A specific date</span>
+                <span class="opt__desc">Everything since the morning of that day.</span>
+              </label>
+              <div class="opt__extra"><input class="input" type="date" aria-label="Start date" value="2026-11-19"></div>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="cta-row hide-when-busy">
+          <button class="btn btn--primary" type="button" id="go" data-press><span class="btn__dot" aria-hidden="true"></span>Make my catch-up</button>
+          <span class="hint" id="go-hint">About 20 seconds for 1,000 messages.</span>
+        </div>
+
+        <section class="apps" id="apps" aria-labelledby="apps-title">
+          <h2 id="apps-title">Works with exports from</h2>
+          <ul class="apps__grid">
+            <li class="app-tile"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-bubble"></use></svg><span>WhatsApp<small>.txt or .zip</small></span></li>
+            <li class="app-tile"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-plane"></use></svg><span>Telegram<small>JSON export</small></span></li>
+            <li class="app-tile"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-hash"></use></svg><span>Slack<small>Channel JSON</small></span></li>
+            <li class="app-tile"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-headset"></use></svg><span>Discord<small>JSON export</small></span></li>
+            <li class="app-tile"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-heart"></use></svg><span>Instagram<small>DM JSON</small></span></li>
+            <li class="app-tile"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-bubbles"></use></svg><span>Messenger<small>JSON</small></span></li>
+            <li class="app-tile"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-clipboard"></use></svg><span>Pasted text<small>Any format above</small></span></li>
+            <li class="app-tile"><svg class="icon" aria-hidden="true"><use href="icons.svg#g-screenshot"></use></svg><span>Screenshots<small>Read on device</small></span></li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="import-aside" aria-labelledby="privacy-title">
+        <div class="panel privacy">
+          <div class="privacy__head">
+            <div>
+              <h2 id="privacy-title">What leaves this device</h2>
+              <p id="privacy-sub">A sample from the demo file, exactly as it would be sent.</p>
+            </div>
+            <label class="switch"><input type="checkbox" id="show-original"><span class="switch__track" aria-hidden="true"></span>Show original</label>
+          </div>
+          <ul class="preview-lines" id="preview" aria-live="polite"></ul>
+          <p class="privacy__count" id="privacy-count"></p>
+          <ul class="leaves">
+            <li class="yes"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-check"></use></svg><span>Masked message text from your chosen range</span></li>
+            <li class="no"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-close"></use></svg><span>Names, phone numbers, emails, UPI IDs</span></li>
+            <li class="no"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-close"></use></svg><span>Photos, voice notes, files, the raw export</span></li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <div class="state-switcher" role="group" aria-label="Concept preview controls">
+    <fieldset>
+      <legend>Concept: preview states</legend>
+      <div class="state-switcher__opts" id="switcher">
+        <label><input type="radio" name="concept-state" value="empty" checked><span>Empty</span></label>
+        <label><input type="radio" name="concept-state" value="loading"><span>Loading</span></label>
+        <label><input type="radio" name="concept-state" value="detected"><span>Detected</span></label>
+        <label><input type="radio" name="concept-state" value="parsing"><span>Parsing</span></label>
+        <label><input type="radio" name="concept-state" value="error"><span>Error</span></label>
+        <label><input type="radio" name="concept-state" value="done"><span>Done</span></label>
+      </div>
+    </fieldset>
+  </div>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="js/spring.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/mask.js"></script>
+  <script src="js/import.js"></script>
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CatchUp: the 9 messages that matter in your group chat</title>
+  <meta name="description" content="Drop in a WhatsApp, Telegram, Slack or Discord export. Get the deadlines, decisions, links and unanswered questions, each linked to the message it came from. Names and numbers are masked on your device.">
+  <meta name="theme-color" content="#ffffff">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width='22' height='22' rx='5' fill='%230e1a24'/%3E%3Crect x='4' y='5' width='9' height='2.5' rx='1.25' fill='%2357636e'/%3E%3Crect x='4' y='9.75' width='14' height='3' rx='1.5' fill='%23d7f25c'/%3E%3Crect x='4' y='15' width='6' height='2.5' rx='1.25' fill='%2357636e'/%3E%3C/svg%3E">
+  <script>try{var t=localStorage.getItem("catchup-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <p class="static-note">Static preview with fictional data. The working app (import, AI summary, accounts) runs on Vercel; the link is in the project README.</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="CatchUp home">
+        <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true"><rect class="n" x="1" y="2" width="13" height="3" rx="1.5"/><rect class="n" x="1" y="7" width="19" height="3" rx="1.5"/><rect class="s" x="1" y="12" width="20" height="4" rx="2"/><rect class="n" x="1" y="18" width="9" height="3" rx="1.5"/></svg>
+        CatchUp
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html" aria-current="page" class="hide-sm">How it works</a>
+        <a href="catchup.html" class="hide-sm">Demo catch-up</a>
+        <a href="import.html">Import</a>
+      </nav>
+      <button class="icon-btn" type="button" data-theme-toggle data-press aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-moon"></use></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero container" aria-labelledby="hero-title">
+      <div class="hero__grid">
+        <div>
+          <span class="eyebrow">For class, club, hostel and work groups</span>
+          <h1 id="hero-title">Read the <span class="hl">9 messages that matter.</span> Skip the other 1,275.</h1>
+          <p class="hero__lead">Export your group chat and drop it here. CatchUp pulls out the deadlines, decisions, links and questions nobody answered, and shows the exact message each one came from.</p>
+          <div class="hero__ctas">
+            <a class="btn btn--primary" href="import.html" data-press><span class="btn__dot" aria-hidden="true"></span>Catch up on a chat</a>
+            <a class="btn btn--secondary" href="catchup.html" data-press>See a demo catch-up</a>
+          </div>
+          <ul class="trust">
+            <li><svg class="icon" aria-hidden="true"><use href="icons.svg#u-device"></use></svg>Names and numbers masked on your device</li>
+            <li><svg class="icon" aria-hidden="true"><use href="icons.svg#u-lock"></use></svg>Raw chat never stored</li>
+            <li><svg class="icon" aria-hidden="true"><use href="icons.svg#u-check"></use></svg>No sign-up to try</li>
+          </ul>
+        </div>
+
+        <figure class="collapse" id="collapse" data-phase="noise" aria-labelledby="collapse-cap" style="margin:0">
+          <div class="collapse__bar">
+            <div class="collapse__title">
+              <span class="avatar-stack" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>CSE-B 2nd Year</span>
+            </div>
+            <span class="demo-badge">Demo chat</span>
+          </div>
+          <div class="collapse__counter">
+            <span class="collapse__num num" id="collapse-num">1,284</span>
+            <span class="collapse__unit-wrap">
+              <span class="collapse__unit unit-noise">messages since you left</span>
+              <span class="collapse__unit unit-signal">things that matter</span>
+            </span>
+            <span class="collapse__sub" id="collapse-sub">Fri 20 Nov, 7:02 AM to 11:48 PM. Fictional group, fictional members.</span>
+          </div>
+          <ol class="stream" id="stream" aria-label="Demo chat messages"></ol>
+          <figcaption class="collapse__foot" id="collapse-cap">
+            <span>9 items, each linked to its message</span>
+            <span style="display:flex;gap:8px;align-items:center">
+              <button class="btn btn--ghost btn--sm" type="button" id="replay" data-press><svg class="icon" aria-hidden="true"><use href="icons.svg#u-replay"></use></svg>Replay</button>
+              <a href="catchup.html">Open full catch-up</a>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- BENTO -->
+    <section class="section container" aria-labelledby="what-title" style="padding-top:0">
+      <div class="section-head section-head--split">
+        <div>
+          <span class="eyebrow">What you get back</span>
+          <h2 id="what-title" style="margin-top:var(--space-3)">Six kinds of signal, each with its receipt.</h2>
+        </div>
+        <p>Every item links to the message it came from, so you can check it in two seconds instead of trusting a summary.</p>
+      </div>
+
+      <div class="bento">
+        <article class="bento__cell b-7">
+          <div class="bento__head">
+            <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-mask"></use></svg>Privacy</span>
+            <span class="chip-meta">Runs in your browser</span>
+          </div>
+          <h3>Names and numbers are masked before anything leaves your phone</h3>
+          <p>People become Member 1, Member 2. Phone numbers, emails and UPI IDs are replaced on your device. The summariser only ever sees the masked version.</p>
+          <div class="bento__ui mask-demo" id="mask-demo" aria-live="off">
+            <div class="mask-row">
+              <span class="mask-row__who"><span class="tok" data-from="Ananya Rao" data-to="Member 3">Ananya Rao</span> · 9:14 PM</span>
+              <span>Farewell money ₹200 each, send to <span class="tok" data-from="ananya.rao@okaxis" data-to="[upi-id]">ananya.rao@okaxis</span> or call <span class="tok" data-from="98450 12345" data-to="[phone]">98450 12345</span></span>
+            </div>
+            <div class="mask-row">
+              <span class="mask-row__who"><span class="tok" data-from="Karthik S" data-to="Member 7">Karthik S</span> · 9:20 PM</span>
+              <span>Mail the list to <span class="tok" data-from="karthik.s@example.com" data-to="[email]">karthik.s@example.com</span> by Wednesday</span>
+            </div>
+            <p class="mask-legend"><span><b>Names</b> become Member N</span><span><b>Phones, emails, UPI IDs</b> masked</span></p>
+          </div>
+        </article>
+
+        <article class="bento__cell b-5">
+          <div class="bento__head">
+            <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-deadline"></use></svg>Deadline</span>
+            <span class="chip-meta">Latest change wins</span>
+          </div>
+          <h3>Dates come out as dates</h3>
+          <p>Time, room and the last-minute change, ready for your calendar.</p>
+          <div class="bento__ui deadline-mini">
+            <div class="deadline-mini__top">
+              <span class="chip-urgent">Due in 9 h</span>
+              <span class="chip-meta">Moved up from Monday</span>
+            </div>
+            <h4>DBMS lab record submission</h4>
+            <dl class="facts">
+              <div><dt><svg class="icon" aria-hidden="true"><use href="icons.svg#u-clock"></use></svg><span class="visually-hidden">When</span></dt><dd>Sat 21 Nov, 9:00 AM</dd></div>
+              <div><dt><svg class="icon" aria-hidden="true"><use href="icons.svg#u-pin"></use></svg><span class="visually-hidden">Where</span></dt><dd>Lab 3, CSE block, 2nd floor</dd></div>
+            </dl>
+            <button class="btn btn--secondary btn--sm" type="button" data-press data-ics='{"title":"DBMS lab record submission (demo)","start":"2026-11-21T09:00:00+05:30","minutes":60,"location":"Lab 3, CSE block, 2nd floor","note":"From CatchUp demo chat. Fictional."}'><svg class="icon" aria-hidden="true"><use href="icons.svg#u-cal-plus"></use></svg>Add to calendar (.ics)</button>
+          </div>
+        </article>
+
+        <article class="bento__cell b-4">
+          <div class="bento__head">
+            <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-link"></use></svg>Links</span>
+            <span class="chip-meta"><span class="num" id="shares">9</span> shares, 3 links</span>
+          </div>
+          <h3>The same link, counted once</h3>
+          <ul class="bento__ui dedupe">
+            <li><span class="dedupe__title">OS Unit 4 notes<span class="dedupe__domain">drive.google.com</span></span><span class="dedupe__count">×4</span></li>
+            <li><span class="dedupe__title">Hackathon team form<span class="dedupe__domain">forms.gle</span></span><span class="dedupe__count">×3</span></li>
+            <li><span class="dedupe__title">Placement aptitude sheet<span class="dedupe__domain">docs.google.com</span></span><span class="dedupe__count">×2</span></li>
+          </ul>
+        </article>
+
+        <article class="bento__cell b-4">
+          <div class="bento__head">
+            <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-question"></use></svg>Open question</span>
+          </div>
+          <h3>The question that got buried</h3>
+          <div class="bento__ui question-mini">
+            <q>Is the 2nd-year bus at 7:40 or 8:10 tomorrow?</q>
+            <div class="noise" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+            <div class="question-mini__meta"><span>Member 12 · 10:30 PM</span><span><b>0</b> replies</span><span><b>63</b> messages since</span></div>
+          </div>
+        </article>
+
+        <article class="bento__cell b-4" id="poll-cell">
+          <div class="bento__head">
+            <span class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-poll"></use></svg>Poll</span>
+            <span class="chip-meta">34 votes</span>
+          </div>
+          <h3>Polls, with the result</h3>
+          <ul class="bento__ui poll" data-poll>
+            <li class="is-winner" data-v="18"><span class="poll__label"><span>Yes, after the lab</span><b>18</b></span><span class="poll__track"><span class="poll__fill"></span></span></li>
+            <li data-v="11"><span class="poll__label"><span>No extra class</span><b>11</b></span><span class="poll__track"><span class="poll__fill"></span></span></li>
+            <li data-v="5"><span class="poll__label"><span>Online instead</span><b>5</b></span><span class="poll__track"><span class="poll__fill"></span></span></li>
+          </ul>
+        </article>
+
+        <article class="bento__cell b-12" style="min-height:0">
+          <div class="heat-wrap">
+            <div style="display:grid;gap:var(--space-3)">
+              <span class="tag" style="width:max-content"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-clock"></use></svg>Group insights</span>
+              <h3>When your group actually talks</h3>
+              <p class="chip-meta" style="font-size:var(--text-sm)">Busiest hours, counted on your device. In the demo chat, <b style="color:var(--color-ink)">41% of messages</b> land after 9 PM.</p>
+            </div>
+            <div>
+              <div class="heat" id="heat" role="img" aria-label="Messages per hour in the demo chat. Peak between 10 PM and midnight."></div>
+              <div class="heat__axis" aria-hidden="true"><span>12 AM</span><span>6 AM</span><span>12 PM</span><span>6 PM</span><span>11 PM</span></div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- STATS -->
+    <section class="container" aria-labelledby="stats-title">
+      <div class="stats">
+        <div class="stats__head">
+          <h2 id="stats-title" class="visually-hidden">Numbers from a demo run</h2>
+          <span class="demo-badge">From a demo run · fictional chat</span>
+          <p>Minutes saved assumes one second of scrolling per message.</p>
+        </div>
+        <dl class="stats__grid" id="stats">
+          <div><dt>messages read</dt><dd class="num" data-count="1284">0</dd></div>
+          <div><dt>stickers, "ok"s, forwards and media notes set aside</dt><dd class="num"><span class="mark" data-count="1141">0</span></dd></div>
+          <div><dt>of scrolling you skipped</dt><dd class="num"><span data-count="21">0</span><small>min</small></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- COMPARE -->
+    <section class="section container" aria-labelledby="compare-title">
+      <div class="section-head">
+        <span class="eyebrow">Side by side</span>
+        <h2 id="compare-title">Scrolling the chat vs CatchUp</h2>
+      </div>
+      <table class="compare">
+        <caption class="visually-hidden">Five everyday tasks, done by scrolling versus with CatchUp</caption>
+        <thead>
+          <tr><th scope="col">#</th><th scope="col">Task</th><th scope="col">Scrolling the chat</th><th scope="col">With CatchUp</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="idx">01 <span>/ 05</span></td><th scope="row">Find the deadline</th><td class="old" data-label="Scrolling the chat">Search "submission", then scroll on in case someone changed the date later.</td><td class="new" data-label="With CatchUp">Every date pulled out, latest change wins, one tap to your calendar.</td></tr>
+          <tr><td class="idx">02 <span>/ 05</span></td><th scope="row">Know what was decided</th><td class="old" data-label="Scrolling the chat">Read the whole argument to find who finally said yes.</td><td class="new" data-label="With CatchUp">The decision on one line, with the message that settled it.</td></tr>
+          <tr><td class="idx">03 <span>/ 05</span></td><th scope="row">Get the right link</th><td class="old" data-label="Scrolling the chat">The same Drive link shared four times, the latest version buried.</td><td class="new" data-label="With CatchUp">Deduplicated, grouped by site, with who shared it first.</td></tr>
+          <tr><td class="idx">04 <span>/ 05</span></td><th scope="row">Spot unanswered questions</th><td class="old" data-label="Scrolling the chat">Gone after forty new messages. Someone asks again tomorrow.</td><td class="new" data-label="With CatchUp">Listed on their own, so you can be the one who answers.</td></tr>
+          <tr><td class="idx">05 <span>/ 05</span></td><th scope="row">Keep people's details private</th><td class="old" data-label="Scrolling the chat">Pasting the chat into a chatbot sends every name and number with it.</td><td class="new" data-label="With CatchUp">Names, phones, emails and UPI IDs masked on your device first.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section container" aria-labelledby="how-title" style="padding-top:0">
+      <div class="section-head">
+        <span class="eyebrow">How it works</span>
+        <h2 id="how-title">Four steps. About a minute.</h2>
+      </div>
+      <ol class="steps">
+        <li class="step">
+          <div class="step__art" aria-hidden="true"><div class="row"><i style="width:40%"></i></div><div class="row"><i style="width:72%"></i></div><div class="row"><i class="ink" style="width:30%"></i><i style="width:20%"></i></div><div class="row"><i style="width:56%"></i></div></div>
+          <span class="step__n">01</span>
+          <h3>Export the chat</h3>
+          <p class="path">WhatsApp: <kbd>Chat</kbd> › <kbd>More</kbd> › <kbd>Export chat</kbd> › <kbd>Without media</kbd></p>
+          <p>Telegram, Slack, Discord and Instagram exports work too. Or just copy and paste.</p>
+        </li>
+        <li class="step">
+          <div class="step__art" aria-hidden="true" style="place-items:center"><svg class="icon" style="width:32px;height:32px"><use href="icons.svg#u-upload"></use></svg></div>
+          <span class="step__n">02</span>
+          <h3>Drop it in</h3>
+          <p>A .txt, .zip or .json file, pasted text, or up to 10 screenshots. We detect the app and date format for you.</p>
+        </li>
+        <li class="step">
+          <div class="step__art" aria-hidden="true"><div class="row"><i class="ink" style="width:22%"></i><i style="width:50%"></i></div><div class="row"><i class="ink" style="width:22%"></i><i style="width:34%"></i><i class="ink" style="width:14%"></i></div><div class="row"><i class="ink" style="width:22%"></i><i style="width:60%"></i></div></div>
+          <span class="step__n">03</span>
+          <h3>We read it on your device</h3>
+          <p>Parsing and masking run in your browser. Only masked text from the range you pick is sent to be summarised.</p>
+        </li>
+        <li class="step">
+          <div class="step__art" aria-hidden="true"><div class="row"><i style="width:50%"></i></div><div class="row"><i class="lit" style="width:82%;height:8px"></i></div><div class="row"><i style="width:36%"></i></div><div class="row"><i class="lit" style="width:64%;height:8px"></i></div></div>
+          <span class="step__n">04</span>
+          <h3>Get your catch-up</h3>
+          <p>A five-line TL;DR, then deadlines, decisions, links, files, polls and open questions, each with its source.</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section container" aria-labelledby="faq-title" style="padding-top:0">
+      <div class="faq">
+        <div class="section-head" style="margin:0">
+          <span class="eyebrow">Privacy, plainly</span>
+          <h2 id="faq-title">What happens to your chat</h2>
+          <p>Group chats hold other people's phone numbers and payment IDs. We built around that first.</p>
+        </div>
+        <div class="accordion" data-accordion>
+          <div class="accordion__item">
+            <h3><button class="accordion__btn" type="button" aria-expanded="true" aria-controls="faq-1" id="faq-1-btn">What exactly leaves my phone?<svg class="icon" aria-hidden="true"><use href="icons.svg#u-chevron"></use></svg></button></h3>
+            <div class="accordion__panel" id="faq-1" role="region" aria-labelledby="faq-1-btn"><div><p>Only the masked text of the date range you pick. Names are already "Member 1, Member 2", and phone numbers, emails and UPI IDs are replaced before the request is made. Photos, voice notes and files are never read.</p></div></div>
+          </div>
+          <div class="accordion__item">
+            <h3><button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq-2" id="faq-2-btn">Do you store my chat?<svg class="icon" aria-hidden="true"><use href="icons.svg#u-chevron"></use></svg></button></h3>
+            <div class="accordion__panel" id="faq-2" role="region" aria-labelledby="faq-2-btn" hidden style="height:0"><div><p>No. The raw export stays in your browser's memory and is gone when you close the tab. The server summarises the masked text and keeps nothing, unless you choose "Save this catch-up", which stores the summary only.</p></div></div>
+          </div>
+          <div class="accordion__item">
+            <h3><button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq-3" id="faq-3-btn">Can I see real names in my own catch-up?<svg class="icon" aria-hidden="true"><use href="icons.svg#u-chevron"></use></svg></button></h3>
+            <div class="accordion__panel" id="faq-3" role="region" aria-labelledby="faq-3-btn" hidden style="height:0"><div><p>Yes, on your screen only. The list that maps "Member 4" back to a name is kept on your device, so you can switch real names on without them ever being sent anywhere.</p></div></div>
+          </div>
+          <div class="accordion__item">
+            <h3><button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq-4" id="faq-4-btn">Which exports work?<svg class="icon" aria-hidden="true"><use href="icons.svg#u-chevron"></use></svg></button></h3>
+            <div class="accordion__panel" id="faq-4" role="region" aria-labelledby="faq-4-btn" hidden style="height:0"><div><p>WhatsApp (Android and iPhone, .txt or .zip), Telegram (JSON), Slack and Discord (JSON exports), Instagram and Messenger (JSON from "Download your information"), pasted text in any of these formats, and screenshots, which are read on your device.</p></div></div>
+          </div>
+          <div class="accordion__item">
+            <h3><button class="accordion__btn" type="button" aria-expanded="false" aria-controls="faq-5" id="faq-5-btn">What if it gets something wrong?<svg class="icon" aria-hidden="true"><use href="icons.svg#u-chevron"></use></svg></button></h3>
+            <div class="accordion__panel" id="faq-5" role="region" aria-labelledby="faq-5-btn" hidden style="height:0"><div><p>Every item shows the message it came from, and "Open in context" shows the messages around it. If a date was changed twice, you will see both and which one is newer.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="site-footer__grid">
+        <div>
+          <a class="brand" href="index.html">
+            <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true"><rect class="n" x="1" y="2" width="13" height="3" rx="1.5"/><rect class="n" x="1" y="7" width="19" height="3" rx="1.5"/><rect class="s" x="1" y="12" width="20" height="4" rx="2"/><rect class="n" x="1" y="18" width="9" height="3" rx="1.5"/></svg>
+            CatchUp
+          </a>
+          <p style="margin-top:var(--space-3);max-width:28rem">Turns a noisy group chat into the few things you need to act on. Every chat shown on this site is fictional demo data.</p>
+          <div class="noise footer-noise" aria-hidden="true"><i></i><i></i><i></i></div>
+        </div>
+        <nav aria-label="Product">
+          <h2>Product</h2>
+          <ul><li><a href="import.html">Import a chat</a></li><li><a href="catchup.html">Demo catch-up</a></li><li><a href="#faq-title">Privacy</a></li></ul>
+        </nav>
+        <nav aria-label="Exports">
+          <h2>Export guides</h2>
+          <ul><li><a href="import.html#apps">WhatsApp</a></li><li><a href="import.html#apps">Telegram</a></li><li><a href="import.html#apps">Slack and Discord</a></li></ul>
+        </nav>
+      </div>
+      <div class="site-footer__base"><span>Concept prototype.</span><span>Raw chats are never stored.</span></div>
+    </div>
+  </footer>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="js/spring.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/home.js"></script>
+</body>
+</html>

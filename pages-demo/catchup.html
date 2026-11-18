@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo catch-up: CSE-B 2nd Year · CatchUp</title>
+  <meta name="description" content="A demo catch-up built from a fictional class group chat: deadlines, decisions, links, files, polls and open questions, each with its source message.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 22'%3E%3Crect width='22' height='22' rx='5' fill='%230e1a24'/%3E%3Crect x='4' y='5' width='9' height='2.5' rx='1.25' fill='%2357636e'/%3E%3Crect x='4' y='9.75' width='14' height='3' rx='1.5' fill='%23d7f25c'/%3E%3Crect x='4' y='15' width='6' height='2.5' rx='1.25' fill='%2357636e'/%3E%3C/svg%3E">
+  <meta name="theme-color" content="#ffffff">
+  <script>try{var t=localStorage.getItem("catchup-theme");if(t)document.documentElement.setAttribute("data-theme",t)}catch(e){}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap">
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="app.css">
+</head>
+<body>
+  <p class="static-note">Static preview with fictional data. The working app (import, AI summary, accounts) runs on Vercel; the link is in the project README.</p>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="index.html" aria-label="CatchUp home">
+        <svg class="brand__mark" viewBox="0 0 22 22" aria-hidden="true"><rect class="n" x="1" y="2" width="13" height="3" rx="1.5"/><rect class="n" x="1" y="7" width="19" height="3" rx="1.5"/><rect class="s" x="1" y="12" width="20" height="4" rx="2"/><rect class="n" x="1" y="18" width="9" height="3" rx="1.5"/></svg>
+        CatchUp
+      </a>
+      <nav class="site-nav" aria-label="Main">
+        <a href="index.html" class="hide-sm">How it works</a>
+        <a href="catchup.html" aria-current="page" class="hide-sm">Demo catch-up</a>
+        <a href="import.html">Import</a>
+      </nav>
+      <button class="icon-btn" type="button" data-theme-toggle data-press aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="icons.svg#u-moon"></use></svg></button>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <section class="cu-head" aria-labelledby="cu-title">
+        <div>
+          <span class="demo-badge">Demo catch-up · fictional group and members</span>
+          <h1 id="cu-title">CSE-B 2nd Year</h1>
+          <div class="cu-meta">
+            <span><svg class="icon" aria-hidden="true"><use href="icons.svg#u-clock"></use></svg>Since your last message, Thu 19 Nov, 11:40 PM</span>
+            <span><svg class="icon" aria-hidden="true"><use href="icons.svg#g-bubble"></use></svg>WhatsApp export</span>
+            <span><svg class="icon" aria-hidden="true"><use href="icons.svg#u-mask"></use></svg>38 members, shown as Member 1 to 38</span>
+          </div>
+          <div class="cu-actions">
+            <button class="btn btn--secondary btn--sm" type="button" id="copy-tldr" data-press><svg class="icon" aria-hidden="true"><use href="icons.svg#g-clipboard"></use></svg>Copy TL;DR</button>
+            <a class="btn btn--ghost btn--sm" href="import.html" data-press><svg class="icon" aria-hidden="true"><use href="icons.svg#u-upload"></use></svg>New catch-up</a>
+          </div>
+        </div>
+        <div class="cu-score">
+          <div class="cu-score__big"><b class="num" id="score">9</b><span>things that matter, from <s>1,284 messages</s></span></div>
+          <ul class="typecounts" aria-label="Items by type">
+            <li class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-deadline"></use></svg>Deadlines <b>2</b></li>
+            <li class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-decision"></use></svg>Decisions <b>2</b></li>
+            <li class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-link"></use></svg>Links <b>2</b></li>
+            <li class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-file"></use></svg>Files <b>1</b></li>
+            <li class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-question"></use></svg>Open <b>1</b></li>
+            <li class="tag"><svg class="icon" aria-hidden="true"><use href="icons.svg#i-poll"></use></svg>Polls <b>1</b></li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="tldr" aria-labelledby="tldr-title">
+        <div class="tldr__head">
+          <h2 id="tldr-title">TL;DR</h2>
+          <span class="chip-meta">Read in 20 seconds</span>
+        </div>
+        <ol id="tldr">
+          <li><span><a href="#item-d1">DBMS lab record is due <span class="hl">tomorrow, Sat 9:00 AM</span></a> in Lab 3. It was moved up from Monday.</span></li>
+          <li><span><a href="#item-c1">Industrial visit is now 3 Dec</a>; the 28 Nov date is off. Bus leaves the main gate at 7 AM.</span></li>
+          <li><span><a href="#item-c2">Farewell contribution is ₹200 each</a>, paid to Member 6 by Wednesday.</span></li>
+          <li><span><a href="#item-p1">Most voted for an extra class on Saturday</a>, right after the lab (18 of 34).</span></li>
+          <li><span><a href="#item-q1">Nobody has answered when tomorrow's 2nd-year bus leaves</a>, 7:40 or 8:10.</span></li>
+        </ol>
+      </section>
+
+      <section class="tl" aria-labelledby="tl-title">
+        <div class="tl__head">
+          <h2 id="tl-title">While you were away</h2>
+          <span class="tl__now">Fri 20 Nov · grey bars are message volume, cards are what mattered</span>
+        </div>
+        <div class="tl__bands" id="bands"></div>
+      </section>
+    </div>
+
+    <nav class="secnav" aria-label="Catch-up sections">
+      <div class="container"><ul id="secnav"></ul></div>
+    </nav>
+
+    <div class="container cu-body">
+      <div id="sections"></div>
+
+      <aside class="cu-aside" aria-labelledby="ins-title" style="display:grid;gap:var(--space-4)">
+        <div class="panel insights">
+          <div class="insights__head">
+            <h2 id="ins-title">Group insights</h2>
+            <p><svg class="icon" aria-hidden="true"><use href="icons.svg#u-device"></use></svg>Counted on your device. Not sent anywhere.</p>
+          </div>
+          <div class="chart">
+            <h3>Busiest hours</h3>
+            <p>Peak: 10 to 11 PM, 138 messages</p>
+            <div id="chart-hours"></div>
+          </div>
+          <div class="chart">
+            <h3>Messages per day, last 7 days</h3>
+            <p>Friday was 2.4× a normal day</p>
+            <div id="chart-days"></div>
+          </div>
+          <div class="chart">
+            <h3>Most active</h3>
+            <p>Pseudonymous. 5 of 38 members wrote 48% of messages.</p>
+            <ul class="hbars" id="chart-members"></ul>
+          </div>
+          <div class="chart">
+            <h3>Most shared sites</h3>
+            <p>Counted after removing duplicates</p>
+            <ul class="hbars" id="chart-domains"></ul>
+          </div>
+        </div>
+
+        <section class="save" aria-labelledby="save-title">
+          <h2 id="save-title">Keep this catch-up</h2>
+          <p>Optional. Saves the summary only, never the chat, so you can open it on another device.</p>
+          <form id="save-form" novalidate>
+            <div class="save__fields">
+              <div class="field"><label for="save-email">Email</label><input class="input" id="save-email" type="email" autocomplete="email" required></div>
+              <div class="field"><label for="save-pass">Password</label><input class="input" id="save-pass" type="password" autocomplete="new-password" minlength="8" required aria-describedby="save-pass-hint"><span class="hint" id="save-pass-hint">At least 8 characters</span></div>
+            </div>
+            <p class="hint" id="save-error" role="alert" style="color:var(--color-ink)"></p>
+            <button class="btn btn--secondary" type="submit" data-press>Save catch-up</button>
+          </form>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container site-footer__base" style="margin-top:0;border-top:0;padding-top:0">
+      <span>All groups, members and messages on this page are fictional demo data.</span>
+      <a href="index.html">Back to CatchUp</a>
+    </div>
+  </footer>
+
+  <div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+  <script src="js/spring.js"></script>
+  <script src="js/common.js"></script>
+  <script src="js/catchup-data.js"></script>
+  <script src="js/catchup.js"></script>
+</body>
+</html>

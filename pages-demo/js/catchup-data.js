@@ -1,0 +1,141 @@
+/* DEMO DATA. Fictional group, fictional members, fictional messages. Shape mirrors the real API response. */
+window.DEMO_CATCHUP = {
+  types: {
+    deadline: { icon: "i-deadline", label: "Deadline" },
+    decision: { icon: "i-decision", label: "Decision" },
+    question: { icon: "i-question", label: "Open question" },
+    poll: { icon: "i-poll", label: "Poll" },
+    link: { icon: "i-link", label: "Link" },
+    file: { icon: "i-file", label: "File" },
+  },
+  sections: [
+    { id: "deadlines", title: "Deadlines & events", type: "deadline" },
+    { id: "decisions", title: "Decisions", type: "decision" },
+    { id: "questions", title: "Open questions", type: "question" },
+    { id: "polls", title: "Polls & results", type: "poll" },
+    { id: "links", title: "Links", type: "link" },
+    { id: "files", title: "Files mentioned", type: "file" },
+  ],
+  bands: [
+    { id: "morning", label: "Morning", range: "6 AM to 12 PM", from: 6, to: 12 },
+    { id: "afternoon", label: "Afternoon", range: "12 to 5 PM", from: 12, to: 17 },
+    { id: "evening", label: "Evening", range: "5 to 9 PM", from: 17, to: 21 },
+    { id: "night", label: "Night", range: "9 PM to 12 AM", from: 21, to: 24 },
+  ],
+  // messages per hour, 0..23
+  hours: [22, 9, 4, 2, 1, 1, 6, 31, 48, 26, 19, 24, 38, 29, 21, 27, 35, 44, 52, 61, 73, 96, 138, 117],
+  days: [
+    { d: "Sat", n: 412 }, { d: "Sun", n: 268 }, { d: "Mon", n: 590 }, { d: "Tue", n: 503 },
+    { d: "Wed", n: 455 }, { d: "Thu", n: 610 }, { d: "Fri", n: 1284 },
+  ],
+  members: [["Member 7", 212], ["Member 2", 168], ["Member 12", 97], ["Member 4", 81], ["Member 9", 64]],
+  domains: [["drive.google.com", 14], ["forms.gle", 6], ["youtube.com", 5], ["instagram.com", 4], ["github.com", 2]],
+  items: [
+    {
+      id: "d1", type: "deadline", hour: 8.2, row: 0, short: "Lab record due",
+      title: "DBMS lab record submission", urgent: "Due in 9 h", meta: "Moved up from Monday",
+      facts: [["u-clock", "When", "Sat 21 Nov, 9:00 AM"], ["u-pin", "Where", "Lab 3, CSE block, 2nd floor"], ["i-file", "Bring", "Record + printed output"]],
+      ics: { title: "DBMS lab record submission (demo)", start: "2026-11-21T09:00:00+05:30", minutes: 60, location: "Lab 3, CSE block, 2nd floor", note: "From a CatchUp demo chat. Fictional." },
+      source: { who: "Member 4", time: "8:12 AM", text: "Ma'am said DBMS lab record is due <strong>tomorrow 9 AM in Lab 3</strong>, not Monday. Bring the printed outputs also." },
+      context: [
+        ["8:09 AM", "Member 2", "good morning"],
+        ["8:11 AM", "Member 9", "anyone has the record format?"],
+        ["8:12 AM", "Member 4", "Ma'am said DBMS lab record is due tomorrow 9 AM in Lab 3, not Monday. Bring the printed outputs also.", true],
+        ["8:12 AM", "Member 5", "what?? it was monday"],
+        ["8:14 AM", "Member 1", "Confirmed with ma'am, it's tomorrow."],
+      ],
+    },
+    {
+      id: "d2", type: "deadline", hour: 19.5, row: 0, short: "Hackathon closes",
+      title: "Hackathon team registration closes", meta: "5 days left",
+      facts: [["u-clock", "When", "Wed 25 Nov, 11:59 PM"], ["u-pin", "Where", "Online form"], ["u-check", "Team size", "2 to 4"]],
+      ics: { title: "Hackathon registration closes (demo)", start: "2026-11-25T23:00:00+05:30", minutes: 59, location: "Online", note: "From a CatchUp demo chat. Fictional." },
+      source: { who: "Member 7", time: "7:30 PM", text: "Hackathon registrations close <strong>Wednesday 11:59 PM</strong>. Teams of 2 to 4, one form per team. Link below." },
+      context: [
+        ["7:28 PM", "Member 3", "is the hackathon inter-college?"],
+        ["7:30 PM", "Member 7", "Hackathon registrations close Wednesday 11:59 PM. Teams of 2 to 4, one form per team. Link below.", true],
+        ["7:32 PM", "Member 7", "forms.gle/…"],
+        ["7:33 PM", "Member 11", "need 1 more for our team, anyone?"],
+      ],
+    },
+    {
+      id: "c1", type: "decision", hour: 11.1, row: 1, short: "IV moved to 3 Dec",
+      title: "Industrial visit is on 3 Dec, not 28 Nov", meta: "Replaces the 28 Nov plan",
+      desc: "Bus leaves the main gate at 7:00 AM. Consent form due to the class rep by Monday.",
+      source: { who: "Member 1", time: "11:05 AM", text: "Final from HOD: <strong>industrial visit is 3 Dec</strong>, not 28 Nov. Bus at 7 AM from main gate. Consent forms to me by Monday." },
+      context: [
+        ["10:58 AM", "Member 12", "so are we going on 28th or not"],
+        ["11:02 AM", "Member 8", "someone ask the CR pls"],
+        ["11:05 AM", "Member 1", "Final from HOD: industrial visit is 3 Dec, not 28 Nov. Bus at 7 AM from main gate. Consent forms to me by Monday.", true],
+        ["11:06 AM", "Member 12", "finally"],
+      ],
+    },
+    {
+      id: "c2", type: "decision", hour: 21.8, row: 0, short: "Farewell ₹200",
+      title: "Farewell contribution: ₹200 each, paid to Member 6", meta: "Agreed after a 40-message thread",
+      desc: "Pay by Wednesday. Member 6 is collecting and will share the expense sheet.",
+      source: { who: "Member 6", time: "9:50 PM", text: "Okay, fixing it at <strong>₹200 each</strong>. Pay to <span class=\"masked\">UPI ID</span> by Wednesday, I'll share the sheet. Call <span class=\"masked\">•••• ••345</span> if it fails." },
+      context: [
+        ["9:44 PM", "Member 2", "300 is too much for some people"],
+        ["9:47 PM", "Member 4", "200 and we skip the cake?"],
+        ["9:50 PM", "Member 6", "Okay, fixing it at ₹200 each. Pay to [UPI ID] by Wednesday, I'll share the sheet. Call [•••• ••345] if it fails.", true],
+        ["9:51 PM", "Member 7", "done"],
+        ["9:51 PM", "Member 3", "+1"],
+      ],
+    },
+    {
+      id: "q1", type: "question", hour: 22.5, row: 1, short: "Bus time?",
+      title: "Is the 2nd-year bus at 7:40 or 8:10 tomorrow?", meta: "0 replies · 63 messages since",
+      source: { who: "Member 12", time: "10:30 PM", text: "Is the 2nd-year bus at 7:40 or 8:10 tomorrow? Lab is at 9." },
+      context: [
+        ["10:29 PM", "Member 5", "[sticker]"],
+        ["10:30 PM", "Member 12", "Is the 2nd-year bus at 7:40 or 8:10 tomorrow? Lab is at 9.", true],
+        ["10:30 PM", "Member 9", "haha"],
+        ["10:31 PM", "Member 2", "[voice note 0:12]"],
+      ],
+    },
+    {
+      id: "p1", type: "poll", hour: 16.25, row: 2, short: "Extra class poll",
+      title: "Extra class on Saturday?", meta: "34 of 38 voted · closed 6:00 PM",
+      poll: [["Yes, after the lab", 18], ["No extra class", 11], ["Online instead", 5]],
+      source: { who: "Member 1", time: "4:15 PM", text: "POLL: Extra class on Saturday? Sir wants to finish Unit 5." },
+      context: [
+        ["4:12 PM", "Member 1", "Sir asked if we can do an extra class"],
+        ["4:15 PM", "Member 1", "POLL: Extra class on Saturday? Sir wants to finish Unit 5.", true],
+        ["4:16 PM", "Member 10", "after lab is fine"],
+      ],
+    },
+    {
+      id: "l1", type: "link", hour: 13.3, row: 0, short: "OS Unit 4 notes",
+      title: "OS Unit 4 notes (handwritten scan)", domain: "drive.google.com", dupes: 4, meta: "First shared by Member 9",
+      source: { who: "Member 9", time: "1:20 PM", text: "OS unit 4 notes, full scan: drive.google.com/…" },
+      context: [
+        ["1:18 PM", "Member 3", "who has unit 4 notes"],
+        ["1:20 PM", "Member 9", "OS unit 4 notes, full scan: drive.google.com/…", true],
+        ["1:21 PM", "Member 3", "thanks!!"],
+        ["3:02 PM", "Member 11", "drive.google.com/… (same link, forwarded)"],
+      ],
+    },
+    {
+      id: "l2", type: "link", hour: 19.53, row: 1, short: "Team form link",
+      title: "Hackathon team registration form", domain: "forms.gle", dupes: 3, meta: "First shared by Member 7",
+      source: { who: "Member 7", time: "7:32 PM", text: "forms.gle/… (one per team)" },
+      context: [
+        ["7:30 PM", "Member 7", "Hackathon registrations close Wednesday 11:59 PM…"],
+        ["7:32 PM", "Member 7", "forms.gle/… (one per team)", true],
+        ["8:40 PM", "Member 2", "link again pls"],
+      ],
+    },
+    {
+      id: "f1", type: "file", hour: 14.66, row: 1, short: "Lab manual PDF",
+      title: "DBMS_lab_manual_v2.pdf", meta: "Not in your export (media was excluded)",
+      desc: "Version 2 replaces last week's manual. Ask Member 4 if you need it again.",
+      source: { who: "Member 4", time: "2:40 PM", text: "&lt;attached: DBMS_lab_manual_v2.pdf&gt; use this one, v1 has wrong queries for exp 6" },
+      context: [
+        ["2:38 PM", "Member 8", "which manual for the record?"],
+        ["2:40 PM", "Member 4", "<attached: DBMS_lab_manual_v2.pdf> use this one, v1 has wrong queries for exp 6", true],
+        ["2:41 PM", "Member 8", "ok thanks"],
+      ],
+    },
+  ],
+};
