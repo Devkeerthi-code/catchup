@@ -1,0 +1,86 @@
+{
+ "guild": {
+  "id": "900",
+  "name": "Campus Devs"
+ },
+ "channel": {
+  "id": "901",
+  "type": "GuildTextChat",
+  "category": "General",
+  "name": "announcements"
+ },
+ "messages": [
+  {
+   "id": "1001",
+   "type": "GuildMemberJoin",
+   "timestamp": "2024-03-12T09:00:00.000+05:30",
+   "content": "",
+   "author": {
+    "id": "11",
+    "name": "kavya_r",
+    "nickname": "Kavya"
+   },
+   "attachments": [],
+   "reactions": []
+  },
+  {
+   "id": "1002",
+   "type": "Default",
+   "timestamp": "2024-03-12T09:05:00.000+05:30",
+   "content": "Standup moved to 10:30 tomorrow, same Meet link https://meet.google.com/abc-defg-hij",
+   "author": {
+    "id": "12",
+    "name": "dev_sid",
+    "nickname": "Siddharth"
+   },
+   "attachments": [],
+   "reactions": [
+    {
+     "emoji": {
+      "id": "",
+      "name": "👍"
+     },
+     "count": 4
+    }
+   ]
+  },
+  {
+   "id": "1003",
+   "type": "Reply",
+   "timestamp": "2024-03-12T09:06:00.000+05:30",
+   "content": "Can we push it to 11?",
+   "author": {
+    "id": "11",
+    "name": "kavya_r",
+    "nickname": "Kavya"
+   },
+   "attachments": [],
+   "reactions": [],
+   "reference": {
+    "messageId": "1002",
+    "channelId": "901",
+    "guildId": "900"
+   }
+  },
+  {
+   "id": "1004",
+   "type": "Default",
+   "timestamp": "2024-03-12T09:10:00.000+05:30",
+   "content": "",
+   "author": {
+    "id": "13",
+    "name": "tanvi.k",
+    "nickname": null
+   },
+   "attachments": [
+    {
+     "id": "a1",
+     "url": "https://cdn.example.com/attachments/sprint_plan.xlsx",
+     "fileName": "sprint_plan.xlsx",
+     "fileSizeBytes": 2000
+    }
+   ],
+   "reactions": []
+  }
+ ]
+}
