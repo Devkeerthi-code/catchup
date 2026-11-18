@@ -1,0 +1,61 @@
+{
+ "participants": [
+  {
+   "name": "Ananya Krishnan"
+  },
+  {
+   "name": "Rahul Sharma"
+  },
+  {
+   "name": "Zo\u00c3\u00ab Fernandes"
+  }
+ ],
+ "messages": [
+  {
+   "sender_name": "Zo\u00c3\u00ab Fernandes",
+   "timestamp_ms": 1710254400000,
+   "content": "Liked a message"
+  },
+  {
+   "sender_name": "Zo\u00c3\u00ab Fernandes",
+   "timestamp_ms": 1710254280000,
+   "content": "Count me in \u00f0\u009f\u0099\u008b\u00e2\u0080\u008d\u00e2\u0099\u0080\u00ef\u00b8\u008f"
+  },
+  {
+   "sender_name": "Rahul Sharma",
+   "timestamp_ms": 1710254100000,
+   "content": "\u00e0\u00a4\u00a8\u00e0\u00a4\u00ae\u00e0\u00a4\u00b8\u00e0\u00a5\u008d\u00e0\u00a4\u00a4\u00e0\u00a5\u0087 \u00e0\u00a4\u00b8\u00e0\u00a4\u00ac! Trip fund \u00e2\u0082\u00b9500 each, pay by Sunday \u00f0\u009f\u0098\u0082\u00f0\u009f\u0099\u008f",
+   "reactions": [
+    {
+     "reaction": "\u00e2\u009d\u00a4",
+     "actor": "Ananya Krishnan"
+    },
+    {
+     "reaction": "\u00e2\u009d\u00a4",
+     "actor": "Zo\u00c3\u00ab Fernandes"
+    }
+   ]
+  },
+  {
+   "sender_name": "Ananya Krishnan",
+   "timestamp_ms": 1710253800000,
+   "content": "\u00e0\u00ae\u00b5\u00e0\u00ae\u00a3\u00e0\u00ae\u0095\u00e0\u00af\u008d\u00e0\u00ae\u0095\u00e0\u00ae\u00ae\u00e0\u00af\u008d! Booking link: https://www.example.com/trip?utm_source=ig",
+   "share": {
+    "link": "https://www.example.com/trip?utm_source=ig"
+   }
+  },
+  {
+   "sender_name": "Ananya Krishnan",
+   "timestamp_ms": 1710253680000,
+   "photos": [
+    {
+     "uri": "your_instagram_activity/messages/inbox/trip_123/photos/1.jpg",
+     "creation_timestamp": 1710253680
+    }
+   ]
+  }
+ ],
+ "title": "Goa Trip \u00f0\u009f\u008c\u00b4",
+ "is_still_participant": true,
+ "thread_path": "inbox/goatrip_123"
+}
